@@ -81,7 +81,7 @@
   </div>  
   <div class='step total'>Amount to receive: <span class="red">{{total}}</span></div>
   <p class="note">*Not official, or binding; possibly inaccurate; for presentation purposes only.</p>
-  <p><a href="https://patreon.com/richpitul" target="_blank" rel="noopener noreferrer"><img width="20" src="./assets/patreon.png" alt=""></a></p>
+  <p>© 2022 | Richard Pitul <a href="https://patreon.com/richpitul" target="_blank" rel="noopener noreferrer"><img width="20" src="./assets/patreon.png" alt=""></a></p>
 </template>
 
 <style  lang="scss" scoped>
@@ -122,5 +122,8 @@
     &:nth-child(2n) {
       background:#1A1B41;
     }
+  }
+  a {
+    vertical-align: middle;
   }
 </style>
