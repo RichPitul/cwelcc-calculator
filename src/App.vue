@@ -9,6 +9,7 @@
   });      
   const dateProgramStarted = new Date(2022, 3, 1, 0, 0);
   let pricePerDay = ref(0);
+  let unpaidDays = ref(0);
   let dateDiscountStarted = ref();
   let attends = reactive([
     {d:1, attends: true}, 
@@ -48,18 +49,26 @@
         if(dayOfWeek !== 0 && dayOfWeek !== 6 && daysIndexAttending.includes(dayOfWeek) ) count++;
         curDate.setDate(curDate.getDate() + 1);
     }
-    return count;
+    return count - unpaidDays.value;
   }
 </script>
 
 <template>
   <div>
     <h1>Estimate how much you will be refunded from CWELCC?</h1>
-    <p class='step step1'>
+    <p class='step'>
       Enter your current daycare price per day.    
       <input type="number" v-model="pricePerDay">
+    </p>    
+    <p class='step'>
+    Enter the day your fees were reduced by 25%.
+    <input type="date" name="" id="" v-model="dateDiscountStarted">
     </p>
-    <div class='step step1'>
+    <p class='step'>
+      Enter the amount of unpaid days between April 1st and the date your fees were reduced.
+      <input type="number" v-model="unpaidDays">
+    </p>
+    <div class='step'>
       <p>Select which days your child attends daycare</p>
       <div class="buttons">
         <button :class="{'attends': attends[0].attends}" @click="updateAttends(0)">Monday</button>
@@ -68,13 +77,9 @@
         <button :class="{'attends': attends[3].attends}" @click="updateAttends(3)">Thursday</button>
         <button :class="{'attends': attends[4].attends}" @click="updateAttends(4)">Friday</button>      
       </div>
-    </div>
-    <p class='step step1'>
-    Enter the day your fees went down by 25%.
-    <input type="date" name="" id="" v-model="dateDiscountStarted">
-    </p>
+    </div>    
   </div>  
-  <div class='total'>Amount to receive: <span class="red">{{total}}</span></div>
+  <div class='step total'>Amount to receive: <span class="red">{{total}}</span></div>
   <p class="note">*Not official, or binding; possibly inaccurate; for presentation purposes only.</p>
   <p><a href="https://patreon.com/richpitul" target="_blank" rel="noopener noreferrer"><img width="20" src="./assets/patreon.png" alt=""></a></p>
 </template>
