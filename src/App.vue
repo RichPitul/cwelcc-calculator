@@ -8,7 +8,7 @@
     maximumFractionDigits: 0,
   });      
   const dateProgramStarted = new Date(2022, 3, 1, 0, 0);
-  let pricePerDay = ref(31);
+  let pricePerDay = ref(0);
   let dateDiscountStarted = ref();
   let attends = reactive([
     {d:1, attends: true}, 
