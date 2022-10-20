@@ -75,7 +75,8 @@
     </p>
   </div>  
   <div class='total'>Amount to receive: <span class="red">{{total}}</span></div>
-  <p class="note">*Not official, or binding; possibly inaccurate; for presentation purposes only</p>
+  <p class="note">*Not official, or binding; possibly inaccurate; for presentation purposes only.</p>
+  <p><a href="https://patreon.com/richpitul" target="_blank" rel="noopener noreferrer"><img width="20" src="./assets/patreon.png" alt=""></a></p>
 </template>
 
 <style  lang="scss" scoped>
