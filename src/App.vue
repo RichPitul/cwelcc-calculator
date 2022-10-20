@@ -7,8 +7,8 @@
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });      
-  const dateProgramStarted = new Date(2022, 3, 22, 0, 0);
-  let pricePerDay = ref(0);
+  const dateProgramStarted = new Date(2022, 3, 1, 0, 0);
+  let pricePerDay = ref(31);
   let dateDiscountStarted = ref();
   let attends = reactive([
     {d:1, attends: true}, 
@@ -17,7 +17,13 @@
     {d:4, attends: true}, 
     {d:5, attends: true},
   ]);
-  const total = computed(() => {let total = (0.25 * pricePerDay.value) * totalDays.value; return formatter.format(total);});
+  const total = computed(() => {
+    let discountedPrice = 0.75 * pricePerDay.value;
+    let dailyRefund  = discountedPrice < 12 ? pricePerDay.value - 12 : 0.25 * pricePerDay.value;
+    
+    let total = Math.max(0, dailyRefund) * totalDays.value;     
+    return formatter.format(total);
+  });
   
   const totalDays = computed(() => {    
     let timestamp = Date.parse(dateDiscountStarted.value);
